@@ -1,6 +1,6 @@
 # vsdworks
 ## **TABLE OF CONTENT**
-**1. DAY-1**
+>**1. DAY-1**
 ___
 * PART-1 (INTERACTION WITH COMPUTER)
   * INTRODUCTION TO QFN-48
@@ -19,14 +19,14 @@ ___
   * RUN SYNTHESYS
   * OPENLANE PROJ GIT LINK DESCRIPTION
   * STEPS TO CHARACTERISE THE RESULT OF SYNTHESIS 
+
 ___
-DAY - 2
+>**DAY - 2**
 ___
 * PART-1
 
 
-
-# **DAY-1**  
+># **DAY-1**
   
 ## PACKAGE QFN-48
 Here QFN-48 means Quad Flat No-leads which have 48 pins and surface_mount.
@@ -36,8 +36,3 @@ These are used in various applications as follows,
 1. Automotive
 2. Consumer electronics
 3. Industrial and powe applocations ...etc.
-
-
-=============================================================================================
-=                                DAY-1                                                           = 
-  =============================================================================================
