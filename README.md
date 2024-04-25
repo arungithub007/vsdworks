@@ -23,12 +23,12 @@ ___
 ___
 >**DAY - 2**
 ___
-* PART-1
 
 
 ># **DAY-1**
-  
-## PACKAGE QFN-48
+# PART-1 (INTERACTION WITH COMPUTER)
+  ## 1. INTRODUCTION TO QFN-48
+  ### PACKAGE QFN-48
 Here QFN-48 means Quad Flat No-leads which have 48 pins and surface_mount.
 Using these small lead_less packages we can place IC to a circuit board.
 
@@ -36,3 +36,11 @@ These are used in various applications as follows,
 1. Automotive
 2. Consumer electronics
 3. Industrial and powe applocations ...etc.
+
+
+
+
+
+  ## INTRODUCTION TO RISC-V
+  ## FROM S/W TO H/W APPLICATIONS
+
