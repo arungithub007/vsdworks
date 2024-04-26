@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>vsdworks</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-dark">
+            <h1 id="vsdworks">vsdworks</h1>
+<p>This repository contains all the information required for the physical design flow of your IPs or SOCs, using qflow and other open-source tools. It was created during the &quot;Beginner Physical Design using Open-Source EDA Tools&quot; .</p>
+<h2 id="table-of-content"><strong>TABLE OF CONTENT</strong></h2>
+<blockquote>
+<p><strong>1. DAY-1</strong></p>
+</blockquote>
+<hr>
+<ul>
+<li>
+<p>PART-1 (INTERACTION WITH COMPUTER)</p>
+<ul>
+<li>INTRODUCTION TO QFN-48</li>
+<li>INTRODUCTION TO RISC-V</li>
+<li>FROM S/W TO H/W APPLICATIONS</li>
+</ul>
+</li>
+<li>
+<p>PART-2 (SOC DESIGN AND OPENLANE)</p>
+<ul>
+<li>INTRODUCTION TO ALL OPEN SOURCE DEGITAL ASIC DESIGN</li>
+<li>SIMPLIFIED RLT2GDS FLOW</li>
+<li>INTRODUCTION TO OPENLANE AND STRIVE CHIPSET</li>
+<li>INTRODUCTION TO OPENLAEN DETAILED ASIC DESIGN FLOW</li>
+</ul>
+</li>
+<li>
+<p>PART-3 (GET FAMILIAR WITH OPEN SOURCE EDA)</p>
+<ul>
+<li>OPENLADE DIRECTORY STRUCTURE IN DETAILS</li>
+<li>DESIGN PREPARATION SETUP</li>
+<li>RUN SYNTHESYS</li>
+<li>OPENLANE PROJ GIT LINK DESCRIPTION</li>
+<li>STEPS TO CHARACTERISE THE RESULT OF SYNTHESIS</li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>DAY-2</strong></p>
+</blockquote>
+<hr>
+<blockquote>
+<h1 id="day-1"><strong>DAY-1</strong></h1>
+</blockquote>
+<h1 id="part-1-interaction-with-computer">PART-1 (INTERACTION WITH COMPUTER)</h1>
+<h2 id="1-introduction-to-qfn-48">1. INTRODUCTION TO QFN-48</h2>
+<h3 id="package-qfn-48">PACKAGE QFN-48</h3>
+<p>The package are protective layer where ICs are put into to easy handing and assembling onto printed ciruite board to protect devices from damage.</p>
+<p>Here, QFN-48 means Quad Flat No-leads which have 48 pins and surface_mount. A wide variety of electronic packages exist, including through-hole packages, surface mount packages, chip carriers, pin grid arrays, flat packages, and ball grid arrays.
+Using these small packages we can place IC to a circuit board.</p>
+<p>These are used in various applications as follows,</p>
+<ol>
+<li>Automotive</li>
+<li>Consumer electronics</li>
+<li>Industrial and powe applocations ...etc.</li>
+</ol>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/681fcbb6-6838-4b4e-bda4-6b341f610083" alt="Screenshot 2024-04-26 084350"></p>
+<p>The core is placed in the middle of the quad flat package. Here below is how the chip placed in the middle of the package looks like</p>
+<p><strong>IC</strong> is the <strong>intergrated circuit</strong> which consist of millions of transistors, cpacitors, resigtors inside a semiconductor chip.
+They comes in veriety of size and pakages.</p>
+<p><strong>SOC - System on Chip</strong> is kind of IC which has the capability of combining functional elemnts of many electronic device on a single chip. It may constist of CPU, Memeory, inputs, outputs, ICs, IPs and other functional elements integrated init. SOC is used in multiple computing task, we can widely see in mobiles, laptops, tablets, AI devices etc.</p>
+<p>The chip is madeup of <strong>core</strong> and <strong>die</strong> area.</p>
+<p><strong>Die</strong> is the semiconductin_material(specimen) on which caore(fundamental logic circuit) is fabricated.</p>
+<p><strong>Core</strong> is the section of chip where the fundamental logic of the design is placed.</p>
+<p>The fabrication of the chip is done on the <strong>silicon wafer</strong> which are usually of 9 inch to 12 inch in diameter. Then, this wafer is cutted into pieces. Each piece has similar funtionality of the fundamental logic called <strong>Die</strong>.</p>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/16c96f7f-fb9e-4a51-8065-ea4c76d7cd79" alt="Screenshot 2024-04-26 091121"></p>
+<p>We can make external connection by placing Pads on the rectangualer metal patches as in above fig.</p>
+<h2 id="2-introduction-to-risc-v">2. INTRODUCTION TO RISC-V</h2>
+<p>RISC-V stands as a public, open-source specification for an Instruction Set Architecture (ISA) based on Reduced Instruction Set Computer prinnciples, setting it apart from the proprietary ISAs such as x86, typically found in personal computers, and ARM, commonly used in mobile devices.
+Unlike many ISAs that are bound by proprietary standards, RISC-V is accessible under licenses that are free of charge, giving it a significant advantage over its commercial counterparts. It’s characterized by its simplicity, stability, and compact standard base, while offering extendable ISA support. This has been instrumental in enhancing the adaptability, scalability, extensibility, and modular nature of chip designs.</p>
+<h2 id="3-from-sw-to-hw-applications">3. FROM S/W TO H/W APPLICATIONS</h2>
+<p><strong>Assembly language</strong> is the bridge betweeen s/w and h/w.
+Different software and applications runs in different language programs(ex:- C, C++, Java, pyhton ...etc). Hardware cannot understand these lanuguages therefore we use special program like comiler and assembler to convert the instuctions in different languages to the targeted assembly language.</p>
+<h1 id="part-2-soc-design-and-openlane">PART-2 (SOC DESIGN AND OPENLANE)</h1>
+<h2 id="1-introduction-to-all-open-source-degital-asic-design">1. INTRODUCTION TO ALL OPEN SOURCE DEGITAL ASIC DESIGN</h2>
+<p>Some of the open sources we can use for,</p>
+<ol>
+<li>
+<p>RTL Designs</p>
+<ul>
+<li><a href="http://libracores.org">libracores.org</a></li>
+<li><a href="http://opencores.org">opencores.org</a></li>
+<li><a href="http://github.com">github.com</a></li>
+</ul>
+</li>
+<li>
+<p>EDA tools</p>
+<ul>
+<li>Qflow</li>
+<li>OpenRoad</li>
+<li>OpenLane</li>
+</ul>
+</li>
+<li>
+<p>PDK data</p>
+</li>
+</ol>
+<blockquote>
+<p>PKD: <em>Process Desin Kit</em> is a collection of files used to model fabrication process by the EDA tools to design an IC.</p>
+<blockquote>
+<p>This is the interface between fabrication and designers</p>
+</blockquote>
+<p>The PDK includes:</p>
+<ul>
+<li>PDRs: <em>process design rules</em> contained in DRC, LVS, PEX files.</li>
+<li>Device Models.</li>
+<li>Digital STD_Cell libs.</li>
+<li>I/O libs.</li>
+</ul>
+</blockquote>
+<h2 id="2-simplified-rlt2gds-flow">2. SIMPLIFIED RLT2GDS FLOW</h2>
+<h2 id="3-introduction-to-openlane-and-strive-chipset">3. INTRODUCTION TO OPENLANE AND STRIVE CHIPSET</h2>
+<h2 id="4-introduction-to-openlaen-detailed-asic-design-flow">4. INTRODUCTION TO OPENLAEN DETAILED ASIC DESIGN FLOW</h2>
+<h1 id="part-3-get-familiar-with-open-source-eda">PART-3 (GET FAMILIAR WITH OPEN SOURCE EDA)</h1>
+<h2 id="1-openlade-directory-structure-in-details">1. OPENLADE DIRECTORY STRUCTURE IN DETAILS</h2>
+<h2 id="2-design-preparation-setup">2. DESIGN PREPARATION SETUP</h2>
+<h2 id="3-run-synthesys">3. RUN SYNTHESYS</h2>
+<h2 id="4-openlane-proj-git-link-description">4. OPENLANE PROJ GIT LINK DESCRIPTION</h2>
+<h2 id="5-steps-to-characterise-the-result-of-synthesis">5. STEPS TO CHARACTERISE THE RESULT OF SYNTHESIS</h2>
+
+            
+            
+        </body>
+        </html>

@@ -1,4 +1,6 @@
 # vsdworks
+This repository contains all the information required for the physical design flow of your IPs or SOCs, using qflow and other open-source tools. It was created during the "Beginner Physical Design using Open-Source EDA Tools" .
+
 ## **TABLE OF CONTENT**
 >**1. DAY-1**
 ___
@@ -21,7 +23,7 @@ ___
   * STEPS TO CHARACTERISE THE RESULT OF SYNTHESIS 
 
 ___
->**DAY - 2**
+>**DAY-2**
 ___
 
 
@@ -64,10 +66,50 @@ The fabrication of the chip is done on the **silicon wafer** which are usually o
 We can make external connection by placing Pads on the rectangualer metal patches as in above fig.
 
   ## 2. INTRODUCTION TO RISC-V
-
-RISC-V stands as a public, open-source specification for an Instruction Set Architecture (ISA) based on Reduced Instruction Set Computer prinnciples, setting it apart from the proprietary ISAs such as x86, typically found in personal computers, and ARM, commonly used in mobile devices. Unlike many ISAs that are bound by proprietary standards, RISC-V is accessible under licenses that are free of charge, giving it a significant advantage over its commercial counterparts. It’s characterized by its simplicity, stability, and compact standard base, while offering extendable ISA support. This has been instrumental in enhancing the adaptability, scalability, extensibility, and modular nature of chip designs.
+  RISC-V stands as a public, open-source specification for an Instruction Set Architecture (ISA) based on Reduced Instruction Set Computer prinnciples, setting it apart from the proprietary ISAs such as x86, typically found in personal computers, and ARM, commonly used in mobile devices. 
+  Unlike many ISAs that are bound by proprietary standards, RISC-V is accessible under licenses that are free of charge, giving it a significant advantage over its commercial counterparts. It’s characterized by its simplicity, stability, and compact standard base, while offering extendable ISA support. This has been instrumental in enhancing the adaptability, scalability, extensibility, and modular nature of chip designs.
 
   ## 3. FROM S/W TO H/W APPLICATIONS
   **Assembly language** is the bridge betweeen s/w and h/w. 
   Different software and applications runs in different language programs(ex:- C, C++, Java, pyhton ...etc). Hardware cannot understand these lanuguages therefore we use special program like comiler and assembler to convert the instuctions in different languages to the targeted assembly language. 
+
+# PART-2 (SOC DESIGN AND OPENLANE)
+  ## 1. INTRODUCTION TO ALL OPEN SOURCE DEGITAL ASIC DESIGN
+  Some of the open sources we can use for,
+  1. RTL Designs
+       * libracores.org
+       * opencores.org
+       * github.com   
+
+  2. EDA tools 
+       * Qflow
+       * OpenRoad
+       * OpenLane
+  
+  3. PDK data
+
+
+> PKD: *Process Desin Kit* is a collection of files used to model fabrication process by the EDA tools to design an IC. 
+> >This is the interface between fabrication and designers 
+> 
+> The PDK includes:
+> * PDRs: *process design rules* contained in DRC, LVS, PEX files.
+> * Device Models.
+> * Digital STD_Cell libs.
+> * I/O libs.
+
+
+   
+      
+  ## 2. SIMPLIFIED RLT2GDS FLOW
+  ## 3. INTRODUCTION TO OPENLANE AND STRIVE CHIPSET
+  ## 4. INTRODUCTION TO OPENLAEN DETAILED ASIC DESIGN FLOW
+    
+# PART-3 (GET FAMILIAR WITH OPEN SOURCE EDA)
+  ## 1. OPENLADE DIRECTORY STRUCTURE IN DETAILS
+  ## 2. DESIGN PREPARATION SETUP
+  ## 3. RUN SYNTHESYS
+  ## 4. OPENLANE PROJ GIT LINK DESCRIPTION
+  ## 5. STEPS TO CHARACTERISE THE RESULT OF SYNTHESIS 
+
 
