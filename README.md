@@ -87,6 +87,7 @@ We can make external connection by placing Pads on the rectangualer metal patche
        * OpenLane
   
   3. PDK data
+      * [Google + skywater](https://github.com/google/skywater-pdk) = foss 130nm PDK
 
 
 > PKD: *Process Desin Kit* is a collection of files used to model fabrication process by the EDA tools to design an IC. 
@@ -102,6 +103,52 @@ We can make external connection by placing Pads on the rectangualer metal patche
    
       
   ## 2. SIMPLIFIED RLT2GDS FLOW
+### Logic Synthesis
+| no.  | Description              | tool    |
+| :--- | :----------------------- | :------ |
+| i    | RTL synthesis using      | yosys   |
+| ii   | Technology mapping using | abc     |
+| iii  | STA reports using        | OpenSTA |
+### Floor Plan
+| no.  | Description                                            | tool     |
+| :--- | :----------------------------------------------------- | :------- |
+| i    | To implement core area                                 | init_fp  |
+| ii   | To place input,output ports and macros                 | ioplacer |
+| iii  | To geerate the power description n/w                   | pdn      |
+| iv   | To insert welltap and Decap cells(physical only cells) | tapcell  |
+
+
+### Placement
+| no.  | Description                    | tool       |
+| :--- | :----------------------------- | :--------- |
+| i    | To perform Global Placement    | RePlace    |
+| ii   | To Perform Design Optimization | Resizer    |
+| iii  | To perform Timing Optimization | OpenPhySyn |
+| iv   | To Perfrom Detailed Placement  | OpenDP     |
+### CTS
+| no.  | Description                            | tool       |
+| :--- | :------------------------------------- | :--------- |
+| i    | To synthesize the CLK distribution n/w | Triton CTS |
+### Routing
+| no.  | Description                 | tool            |
+| :--- | :-------------------------- | :-------------- |
+| i    | To perform Global rouitng   | FastRoute       |
+| ii   | To perform detailed routing | TritonRoute     |
+| iii  | To Perform SPEF extraction  | SPEF-Extraction |
+### STA
+| no.  | Description        | tool    |
+| :--- | :----------------- | :------ |
+| i    | To get STA reports | OpenSTA |
+### GDSII Generation
+| no.  | Description                                        | tool  |
+| :--- | :------------------------------------------------- | :---- |
+| i    | to perform final GDSII layout file from routed def | magic |
+### Checks
+| no.  | Description                              | tool   |
+| :--- | :--------------------------------------- | :----- |
+| i    | To perform DRC checks and Antenna Checks | Magic  |
+| ii   | To perform LVS checks                    | NetGen |
+
   ## 3. INTRODUCTION TO OPENLANE AND STRIVE CHIPSET
   ## 4. INTRODUCTION TO OPENLAEN DETAILED ASIC DESIGN FLOW
     

@@ -233,6 +233,9 @@ Different software and applications runs in different language programs(ex:- C, 
 </li>
 <li>
 <p>PDK data</p>
+<ul>
+<li><a href="https://github.com/google/skywater-pdk">Google + skywater</a> = foss 130nm PDK</li>
+</ul>
 </li>
 </ol>
 <blockquote>
@@ -249,6 +252,197 @@ Different software and applications runs in different language programs(ex:- C, 
 </ul>
 </blockquote>
 <h2 id="2-simplified-rlt2gds-flow">2. SIMPLIFIED RLT2GDS FLOW</h2>
+<h3 id="logic-synthesis">Logic Synthesis</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">RTL synthesis using</td>
+<td style="text-align:left">yosys</td>
+</tr>
+<tr>
+<td style="text-align:left">ii</td>
+<td style="text-align:left">Technology mapping using</td>
+<td style="text-align:left">abc</td>
+</tr>
+<tr>
+<td style="text-align:left">iii</td>
+<td style="text-align:left">STA reports using</td>
+<td style="text-align:left">OpenSTA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="floor-plan">Floor Plan</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">To implement core area</td>
+<td style="text-align:left">init_fp</td>
+</tr>
+<tr>
+<td style="text-align:left">ii</td>
+<td style="text-align:left">To place input,output ports and macros</td>
+<td style="text-align:left">ioplacer</td>
+</tr>
+<tr>
+<td style="text-align:left">iii</td>
+<td style="text-align:left">To geerate the power description n/w</td>
+<td style="text-align:left">pdn</td>
+</tr>
+<tr>
+<td style="text-align:left">iv</td>
+<td style="text-align:left">To insert welltap and Decap cells(physical only cells)</td>
+<td style="text-align:left">tapcell</td>
+</tr>
+</tbody>
+</table>
+<h3 id="placement">Placement</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">To perform Global Placement</td>
+<td style="text-align:left">RePlace</td>
+</tr>
+<tr>
+<td style="text-align:left">ii</td>
+<td style="text-align:left">To Perform Design Optimization</td>
+<td style="text-align:left">Resizer</td>
+</tr>
+<tr>
+<td style="text-align:left">iii</td>
+<td style="text-align:left">To perform Timing Optimization</td>
+<td style="text-align:left">OpenPhySyn</td>
+</tr>
+<tr>
+<td style="text-align:left">iv</td>
+<td style="text-align:left">To Perfrom Detailed Placement</td>
+<td style="text-align:left">OpenDP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cts">CTS</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">To synthesize the CLK distribution n/w</td>
+<td style="text-align:left">Triton CTS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="routing">Routing</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">To perform Global rouitng</td>
+<td style="text-align:left">FastRoute</td>
+</tr>
+<tr>
+<td style="text-align:left">ii</td>
+<td style="text-align:left">To perform detailed routing</td>
+<td style="text-align:left">TritonRoute</td>
+</tr>
+<tr>
+<td style="text-align:left">iii</td>
+<td style="text-align:left">To Perform SPEF extraction</td>
+<td style="text-align:left">SPEF-Extraction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sta">STA</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">To get STA reports</td>
+<td style="text-align:left">OpenSTA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gdsii-generation">GDSII Generation</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">to perform final GDSII layout file from routed def</td>
+<td style="text-align:left">magic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checks">Checks</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">no.</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">To perform DRC checks and Antenna Checks</td>
+<td style="text-align:left">Magic</td>
+</tr>
+<tr>
+<td style="text-align:left">ii</td>
+<td style="text-align:left">To perform LVS checks</td>
+<td style="text-align:left">NetGen</td>
+</tr>
+</tbody>
+</table>
 <h2 id="3-introduction-to-openlane-and-strive-chipset">3. INTRODUCTION TO OPENLANE AND STRIVE CHIPSET</h2>
 <h2 id="4-introduction-to-openlaen-detailed-asic-design-flow">4. INTRODUCTION TO OPENLAEN DETAILED ASIC DESIGN FLOW</h2>
 <h1 id="part-3-get-familiar-with-open-source-eda">PART-3 (GET FAMILIAR WITH OPEN SOURCE EDA)</h1>
