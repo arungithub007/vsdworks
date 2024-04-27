@@ -180,7 +180,7 @@
 </blockquote>
 <hr>
 <blockquote>
-<h1 id="day-1"><strong>DAY-1</strong></h1>
+<h1 id="day-1">DAY-1</h1>
 </blockquote>
 <h1 id="part-1-interaction-with-computer">PART-1 (INTERACTION WITH COMPUTER)</h1>
 <h2 id="1-introduction-to-qfn-48">1. INTRODUCTION TO QFN-48</h2>
@@ -446,11 +446,135 @@ Different software and applications runs in different language programs(ex:- C, 
 <h2 id="3-introduction-to-openlane-and-strive-chipset">3. INTRODUCTION TO OPENLANE AND STRIVE CHIPSET</h2>
 <h2 id="4-introduction-to-openlaen-detailed-asic-design-flow">4. INTRODUCTION TO OPENLAEN DETAILED ASIC DESIGN FLOW</h2>
 <h1 id="part-3-get-familiar-with-open-source-eda">PART-3 (GET FAMILIAR WITH OPEN SOURCE EDA)</h1>
-<h2 id="1-openlade-directory-structure-in-details">1. OPENLADE DIRECTORY STRUCTURE IN DETAILS</h2>
+<h2 id="1-openlane-directory-structure-in-details">1. OPENLANE DIRECTORY STRUCTURE IN DETAILS</h2>
+<h3 id="importent-file-in-openlane_working_dir">Importent file in openlane_working_dir</h3>
+<ol>
+<li>pdk file</li>
+<li>openlane
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/9f6a5290-4f74-4230-86f4-3a3fb2ad841f" alt="Screenshot 2024-04-27 092126"></li>
+</ol>
+<p>The PDK we are usign here is Skywater130nm which is recently made as opensource. Openlane is built arround this pdk.</p>
+<h3 id="firest-lets-see-pdk-file">Firest lets see PDK file:</h3>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/57f428aa-6cf2-4ff8-bc27-61c9c9006de8" alt="Screenshot 2024-04-27 092816"></p>
+<p>ALL the files present in these pdk files are shown in the above directory structure.</p>
+<p>The silicon foundry files i.e.,skywater130nm or any of the foundry files made to use in the commerrtial eda tools(Paid version) rather than opensource eda tools. This open_pdks used to avoid this problem by converting the files from commertial levl to opensource tool(for example like magic, netgen...etc) usable.</p>
+<p>Sky130A is the foundry file that made opensource eda compatible.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">file</th>
+<th style="text-align:left">description</th>
+<th style="text-align:left">contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">libs.ref</td>
+<td style="text-align:left">it is specific to tecchnology. Here we are focusing on Sky130_fd_sc_hd</td>
+<td style="text-align:left"><img src="https://github.com/arungithub007/vsdworks/assets/95173376/031f4959-abeb-467f-897b-8d0f4550173b" alt="Screenshot 2024-04-27 094803"></td>
+</tr>
+<tr>
+<td style="text-align:left">libs.tech</td>
+<td style="text-align:left">it is specific to tool</td>
+<td style="text-align:left"><img src="https://github.com/arungithub007/vsdworks/assets/95173376/622a8665-cc4f-4160-8636-abb461289bbd" alt="Screenshot 2024-04-27 095010"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sky130_fd_sc_hd-">sky130_fd_sc_hd :</h4>
+<p>The file name abrivates as follows,</p>
+<ul>
+<li>fd --&gt; foundry</li>
+<li>sc --&gt; std_cells</li>
+<li>hd --&gt; high dencity</li>
+</ul>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/9f4622c9-b51b-4deb-b470-b0715a7a606c" alt="Screenshot 2024-04-27 100040">
+these are the files we can find inside the sky130_fd_sc_hd</p>
 <h2 id="2-design-preparation-setup">2. DESIGN PREPARATION SETUP</h2>
-<h2 id="3-run-synthesys">3. RUN SYNTHESYS</h2>
+<h3 id="openlane">openlane</h3>
+<p>openlane is a silicon implimtntation platform that supports open-source tools such as yosys, Openroad, Macgic, Klayout along with other opensource and proprietary utilities.</p>
+<p>These are the files present in openlane
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/872d75aa-2580-4ff9-86ab-a6ddae667a71" alt="Screenshot 2024-04-27 123538"></p>
+<h4 id="the-list-of-main-commands-we-use-here-are">The list of main commands we use here are:</h4>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/2b95a6e6-bca6-4508-b511-bf80859fb186" alt="Screenshot 2024-04-27 125606"></p>
+<blockquote>
+<p>note:- the commads from 3 to 14 can be put into a &lt;file_name&gt; and we can pass it to &quot;flow.tcl&quot; i.e, &gt; ./flow.tcl -interactive -file &lt;file_name&gt;</p>
+</blockquote>
+<h4 id="design-file">Design file</h4>
+<p><strong>picorv32a</strong> is the Design we are using here. we can also create other desig aswell in the design folder of openlane.</p>
+<p>Some list of designs we will get in design is shown in below:
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/037bb8a5-5b14-4e97-b681-fe44f2d3d6eb" alt="Screenshot 2024-04-27 130713"></p>
+<p>The files included in the <strong>picorv32a</strong> is as follows:
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/21fb00d8-8258-4135-a3de-8f0a0d57bdcd" alt="Screenshot 2024-04-27 131531"></p>
+<blockquote>
+<p>note:- here config.tcl contains information about:</p>
+<ul>
+<li>design name</li>
+<li>path to sdc and .v</li>
+<li>clock_period, cloc_port, clock_net</li>
+</ul>
+</blockquote>
+<h4 id="docker">DOCKER</h4>
+<p><strong>First</strong> we need to get inside docker_build using command <em><strong>docker</strong></em> And get the docker into interactive mode.</p>
+<blockquote>
+<ol>
+<li>we should be in interactive mode ohter wise it will excicute full flow.</li>
+</ol>
+<p><code>./flow.tcl -interactive</code></p>
+<ol start="2">
+<li>we need to include all the files required to run the flow</li>
+</ol>
+<p><code>package require openlane 0.9</code></p>
+</blockquote>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/9f5426cc-f717-42ca-aef4-a7130047b3d9" alt="Screenshot 2024-04-27 134121"></p>
+<h4 id="design-setup-stage">Design setup stage:</h4>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/7fdbac9d-f76a-43a6-bc24-10b7a4d9f124" alt="Screenshot 2024-04-27 134420"></p>
+<p>When we run  <code>prep -design picorv32a</code> a run file with todays date will be created inside the <code>Picorv32a&gt;runs&gt;dd/mm/yy</code>
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/3fa75454-414d-4a52-8206-2da2465e6024" alt="image"></p>
+<p>At this point we  can see multiple folders and files are created inside the <strong>27-04_08-06</strong> file. But most of them are empty.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/5b4fa439-607e-465b-b036-a4a658fe12a6" alt="image">
+Step by step each files will generated with report files inside these files.</p>
+<p>Next we will start our synthesis</p>
+<h2 id="3-run-synthesis">3. RUN SYNTHESIS</h2>
+<p><code>run_synthesis</code>This will run the <code>yosys</code> and <code>abc</code> synthesis.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/25808d53-92b1-47e0-ae37-1025d423bf26" alt="image"></p>
 <h2 id="4-openlane-proj-git-link-description">4. OPENLANE PROJ GIT LINK DESCRIPTION</h2>
+<p><a href="https://github.com.efabless/openlane">https://github.com.efabless/openlane</a></p>
 <h2 id="5-steps-to-characterise-the-result-of-synthesis">5. STEPS TO CHARACTERISE THE RESULT OF SYNTHESIS</h2>
+<p>After synthesis report files are generated inside the synthesis folder present in runs. we can see the report mentioned above in these folders, as shown below.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/aada7452-7d7c-404d-b2bf-fad8a1449cf4" alt="image"></p>
+<hr>
+<hr>
+<blockquote>
+<h1 id="day-2">DAY-2</h1>
+</blockquote>
+<h1 id="part-1-chip-floor-planning-considerations">PART 1. Chip floor planning considerations</h1>
+<h2 id="1-utilization-factor-and-aspect-ratio">1. Utilization factor and Aspect ratio</h2>
+<h2 id="6-steps-to-run-floorplan">6. STEPS TO RUN FLOORPLAN</h2>
+<p>Before sunning the floor plan just have a glan on <a href="http://README.html">README.md</a> file in openlane/configuration directory.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/93cd1ed4-352a-477e-8ccc-7f46b4587f70" alt="image"></p>
+<blockquote>
+<p>open openlane/configuration/floorplan.tcl where we can see default parameter set for floorplan by openlane.</p>
+</blockquote>
+<p>here we need to give more preority to  these files.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/cca85fdd-6a5a-46ed-92e5-13d97ad39e5d" alt="image"><img src="https://github.com/arungithub007/vsdworks/assets/95173376/1c654540-3197-4686-8111-e7fa03c96d0d" alt="image"></p>
+<p>|:-|:-|
+|asd||</p>
+<h2 id="7-steps-to-view-floorplan">7. steps to view floorplan</h2>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/dc8e3dad-8167-440d-80ab-04531988d4d8" alt="image"></p>
+<h2 id="8-review-floorplan-in-magic">8. Review Floorplan in magic</h2>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/91e8a1c5-88a2-4564-b5ae-d9fae72aae26" alt="image"></p>
+<p>we can get info of an object by selecting it and asking <strong>&gt;what</strong> in <em><strong>teckon</strong></em> as shown below.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/94555fe4-9b67-43b6-a1ef-30549fad7ce8" alt="image">
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/4fb989cb-7256-45c3-968b-2954a49a82f7" alt="image"></p>
+<h1 id="part-2-library-binding-and-placement">PART 2. Library Binding and Placement</h1>
+<h2 id="congestion-aware-placement">Congestion aware placement</h2>
+<p>The next stage after the floorplan is <em><strong>placement</strong></em>
+to see placement in magic tools:
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/c58e86e9-a04d-492a-9da4-c59e67e6d332" alt="image"></p>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/ad44a51c-79f1-410b-a77d-07d528922e7b" alt="image">
+We can see All the std_cells placed in std_cells rows. All the physical only cells also place.</p>
+<h1 id="part-3-cell-design-and-characterization-flow">PART 3. Cell design and characterization flow</h1>
+<h1 id="part-4-general-timing-charactorization-parameters">PART 4. General timing charactorization parameters</h1>
 
             
             
