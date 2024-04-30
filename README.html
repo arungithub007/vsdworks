@@ -557,8 +557,6 @@ Step by step each files will generated with report files inside these files.</p>
 </blockquote>
 <p>here we need to give more preority to  these files.
 <img src="https://github.com/arungithub007/vsdworks/assets/95173376/cca85fdd-6a5a-46ed-92e5-13d97ad39e5d" alt="image"><img src="https://github.com/arungithub007/vsdworks/assets/95173376/1c654540-3197-4686-8111-e7fa03c96d0d" alt="image"></p>
-<p>|:-|:-|
-|asd||</p>
 <h2 id="7-steps-to-view-floorplan">7. steps to view floorplan</h2>
 <p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/dc8e3dad-8167-440d-80ab-04531988d4d8" alt="image"></p>
 <h2 id="8-review-floorplan-in-magic">8. Review Floorplan in magic</h2>
@@ -575,6 +573,27 @@ to see placement in magic tools:
 We can see All the std_cells placed in std_cells rows. All the physical only cells also place.</p>
 <h1 id="part-3-cell-design-and-characterization-flow">PART 3. Cell design and characterization flow</h1>
 <h1 id="part-4-general-timing-charactorization-parameters">PART 4. General timing charactorization parameters</h1>
+<h1 id="steps-to-disply-std_cells-uisng-magic-tool">Steps to Disply std_cells Uisng Magic tool</h1>
+<ol>
+<li>
+<p>first we need to get the technology file from <code>sky130A</code> pdk folder, to the <code>vsdstdcelldesign</code> folder.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/ae2bc165-50b5-4130-be8f-383255e7f72e" alt="image"></p>
+</li>
+<li>
+<p>now give magic tool command to display the cell</p>
+<blockquote>
+<p>magic -T sky130A.tech sky130_inv.mag</p>
+</blockquote>
+</li>
+<li>
+<p>The inevertor std_cell will be displayed as below.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/6cacb50b-a174-4bb2-90ad-5367cdb8331e" alt="image"></p>
+</li>
+</ol>
+<h1 id="introduction-to-sky130-basic-layers-and-lef-using-inerter">Introduction to sky130 basic layers and Lef using inerter</h1>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/0ff7899a-60e8-4fb8-a28d-0b0c45ac701f" alt="image">
+we can use tkcon to get the infrmation about the cell layers by giving command <code>what</code>.</p>
+<h1 id="creat-std-cell-layout-and-extract-spice-netlist">Creat std cell layout and extract SPICE netlist</h1>
 
             
             

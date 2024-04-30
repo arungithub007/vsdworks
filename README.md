@@ -281,8 +281,6 @@ Before sunning the floor plan just have a glan on README.md file in openlane/con
 here we need to give more preority to  these files.
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/cca85fdd-6a5a-46ed-92e5-13d97ad39e5d)![image](https://github.com/arungithub007/vsdworks/assets/95173376/1c654540-3197-4686-8111-e7fa03c96d0d)
 
-|:-|:-|
-|asd||
 ## 7. steps to view floorplan
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/dc8e3dad-8167-440d-80ab-04531988d4d8)
 ## 8. Review Floorplan in magic
@@ -291,7 +289,6 @@ here we need to give more preority to  these files.
 we can get info of an object by selecting it and asking **>what** in ***teckon*** as shown below.
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/94555fe4-9b67-43b6-a1ef-30549fad7ce8)
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/4fb989cb-7256-45c3-968b-2954a49a82f7)
-
 
 
 # PART 2. Library Binding and Placement
@@ -305,6 +302,22 @@ We can see All the std_cells placed in std_cells rows. All the physical only cel
 
 # PART 3. Cell design and characterization flow
 # PART 4. General timing charactorization parameters
+
+# Steps to Disply std_cells Uisng Magic tool
+1. first we need to get the technology file from `sky130A` pdk folder, to the `vsdstdcelldesign` folder.
+   ![image](https://github.com/arungithub007/vsdworks/assets/95173376/ae2bc165-50b5-4130-be8f-383255e7f72e)
+
+2. now give magic tool command to display the cell
+    > magic -T sky130A.tech sky130_inv.mag
+
+3. The inevertor std_cell will be displayed as below.
+   ![image](https://github.com/arungithub007/vsdworks/assets/95173376/6cacb50b-a174-4bb2-90ad-5367cdb8331e)
+
+# Introduction to sky130 basic layers and Lef using inerter
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/0ff7899a-60e8-4fb8-a28d-0b0c45ac701f)
+we can use tkcon to get the infrmation about the cell layers by giving command `what`.
+
+# Creat std cell layout and extract SPICE netlist
 
 
 
