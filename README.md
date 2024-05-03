@@ -244,11 +244,13 @@ The files included in the **picorv32a** is as follows:
 
 ![Screenshot 2024-04-27 134420](https://github.com/arungithub007/vsdworks/assets/95173376/7fdbac9d-f76a-43a6-bc24-10b7a4d9f124)
 
-When we run  `prep -design picorv32a` a run file with todays date will be created inside the `Picorv32a>runs>dd/mm/yy`
+When we run  `prep -design picorv32a` a run file with todays date will be created inside the `Picorv32a>runs>dd-mm_hr-min`
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/3fa75454-414d-4a52-8206-2da2465e6024) 
 
 At this point we  can see multiple folders and files are created inside the **27-04_08-06** file. But most of them are empty.
+
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/5b4fa439-607e-465b-b036-a4a658fe12a6)
+
 Step by step each files will generated with report files inside these files.
 
 Next we will start our synthesis
@@ -318,6 +320,199 @@ We can see All the std_cells placed in std_cells rows. All the physical only cel
 we can use tkcon to get the infrmation about the cell layers by giving command `what`.
 
 # Creat std cell layout and extract SPICE netlist
+
+first we need to create spice file for our Invertor.
+``tcl
+ext2spice cthresh 0 rthresh 0
+ext2spice
+``
+this will create new .spice file in our vsdstdcelldesign file
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/8fdaba52-ad5b-4ab0-b691-0cba688e8a43)
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/1e8926e4-e0e5-4cbd-b114-38b2f12a4fc0)
+
+Grids are used for easy measure. 
+``box`` in tckon to get the measurment of the grid
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/5cb5d471-23ca-4d65-9fbc-ef635f1a8fbc)
+
+Make required modification in spice file.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/2ebb2c3e-8bfd-4826-b37d-363e67533f1e)
+
+
+
+we need to ru this in ngspice using ``ngsipce <source file name>``
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/0926be7b-f6c6-4327-9bb2-2be04fb985f5)
+
+Now to see plot use command in spice as below:
+> plot y vs time a
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/b1d410d1-986f-446f-b005-1004ac010c14)
+this is our transiant response
+
+Now we need to charectorize the cell. means we need to derive value of 4 parameters.
+1. value of rise transition
+   ![image](https://github.com/arungithub007/vsdworks/assets/95173376/5931ff43-dc97-4d5a-9dd6-756ad6bebff4)
+      ![image](https://github.com/arungithub007/vsdworks/assets/95173376/a56d84ad-248e-42f4-b8ac-26d4c6fa32d9)
+      diff b/w x0 should give raise time:
+      >(2.19701e-09) - (2.15231e-09) = 0.0447ns
+2. value of fall transition
+      > (4.06584e-9) - (4.0401e-9) = 0.02574ns
+
+
+3. fall cell delay
+   > (4.05284e-9)-(4.05052e-9)=0.00228ns
+
+4. rise cell delay
+      > (2.18e-9) - (2.15e-9) = 0.03ns
+
+
+# Instruction to sky130 pdk's and steps to download
+download the files from git
+``wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tg ``
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/d1ea8ec9-5eb8-432e-8497-a1abaa059b09)
+
+To open the magic tool use:
+> magic -d XR
+
+then open metal3.meg file
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/11c6eede-d05d-4c07-8522-b8c43762df0b)
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/9c6ebda8-693f-4693-b92b-e6215109a387)
+
+
+To make a via :
+select a area > select the maetal layer > set the via using ``cif see VIA2``
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/e216634b-a6e1-4a28-8119-cb0bbeb06b70)
+
+# incorrect poly.9
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/c6779364-63fe-4d6c-9cfe-bb18ae5cfb43)
+to correct the error we need to go to sky130.tech file
+
+add the spacing
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/2595cd95-f1e3-46e0-9f86-2879f81691fc)
+
+then, source the tech file again.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/48fa6853-d618-456c-8529-8a301cafa8d6)
+
+# Lab challenge to c=describe the DRC error as geometrical construct
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/cee9237a-d1c8-4f27-9885-9923a0df1adc)
+
+
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/0fb8c0ea-16b6-4a51-b65e-ae4b21faf15f)
+
+vendor drc rules
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/e22f32f1-829a-4e93-af14-6971cef35978)
+
+modified nwell under vendor drc rules
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/61c67601-5516-4422-af00-52a31a5d2bd1)
+---
+style drc
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/ca843205-90e3-4292-871f-ee117825527b)
+modified style drc
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/9f326412-1e70-4021-8de5-ff9142d438ec)
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/0fba0017-11af-4186-beda-89c0c57b0503)
+
+problem is solved by adding ***nsubstratecontact***
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/952c3e2e-6cf3-45f5-9abb-9c8f318ce1fe)
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/e5d1ab24-05d1-455e-88d8-287057b74630)
+
+# Day 4 Pre layout analysis and importance of good clock tree
+
+## Steps to convert grid info to track info
+ ### first objective is to extract lef file from .mag file
+Then, the extracted lef file is plugged into ***picorv32flow***  
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/2cf94f50-d2ad-4f45-8e92-1c6cd16b0582)
+these are teck info, used during ***routing stage***.
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/1aa4b7f9-d84e-4876-bfc8-bbd44b0906c1)
+li1 is the locali we can see in lable A and Y.
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/beaf5cf2-256c-4b7a-ae2b-915a716d82d2)
+now we have converted Grid definition according to track.
+
+ ### second objective is to convert magic layout to std cell lef
+ width of the std cells must be odd multiple of x pitch.
+ ![image](https://github.com/arungithub007/vsdworks/assets/95173376/9d926e9e-ed34-45a2-a457-53f17ec3aa4d)
+same goes for height also.
+
+ #### now we can see how to convert label to ports.
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/9deb22c9-1950-4672-94ae-48dd5ff65411)
+this is how we can create the ports usinf label for A. similerly we can do for all the ports.
+ we need to be carefull while attaching to layer. In label-A and Y, the attach to layer is ***locali*** . But for others it may be metal1, metal2 ..etc. like that.
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/1562eb64-0a88-4348-a68f-e815e94577a9)
+save the layout with our own costum name. i have given sky130_vsdinv.mag.
+
+After creating the sky13_vsdinv.mag open it in magic tool. do ``lef write``, wwhich create leaf file is the same directory.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/d6bf9814-b669-4cc7-8a08-64fb95b090a4)
+
+lef file contains the modifications we have done.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/ffcf78d5-4170-49a4-9202-3b56c30c88c8)
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/4e755966-e7cf-4f95-81f4-3002e308b7a9)
+
+> Now we have to move these files to our design src files. So that all our design files present in a single group.
+
+> Now one more fiel we need to cp is 
+> ![image](https://github.com/arungithub007/vsdworks/assets/95173376/39df7d64-c4bf-4283-a25c-9221cb6cf9a4)
+>
+> after copiying all files our src file will look like this
+> ![image](https://github.com/arungithub007/vsdworks/assets/95173376/32fbf048-2612-40f3-8d44-4d6cc3f44604)
+>
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/69ce039e-114b-403d-b9e1-64a72f0a02f6)
+now that we have added the file, we have to run the reguler flow commands i.e., from docker to synthesis.. floorplan...etc.
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/3fb1838a-e28f-48b1-818a-7c9bae4a84ff)
+
+> run_synthesis
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/c5273831-aa22-4f75-89a1-5493b16b280d)
+
+To improve the timing and run synthesis
+``tcl
+
+prep -design picorv32a -tag 24-03_10-03 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+``
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/a40d9ee0-cc42-4b1c-b34e-9cd13a447a5c)
+
+Check if vsd_inverter is added after the floorplan stage. Check layout after the placement_stage.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/fbf19cfc-8790-4644-a8ed-23b264d051c3)
+the above can be seen in merged.lef file in runs/03-5_12_15/tmp/merged.lef.
+
+after running the run_placement, open the placement using magic tool. Then search for our ***sky130_vsdinv*** by zooming in.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/b8880c2b-64b6-4192-b69e-e38b5f5c9842)
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/dc78b6ca-0da8-4d8a-bd1a-b0aaecb5864c)
+the '*adutment*' is to ensure the power and ground is shared between cells.
+
+when we expand the vsdinv cell we can see the connection between metal layers of our vsdinv cell and the abuted cells.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/614bce0c-52ac-451b-893c-57169f5c3307)
+
+
 
 
 
