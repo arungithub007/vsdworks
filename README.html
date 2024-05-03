@@ -743,6 +743,30 @@ the above can be seen in merged.lef file in runs/03-5_12_15/tmp/merged.lef.</p>
 the '<em>adutment</em>' is to ensure the power and ground is shared between cells.</p>
 <p>when we expand the vsdinv cell we can see the connection between metal layers of our vsdinv cell and the abuted cells.
 <img src="https://github.com/arungithub007/vsdworks/assets/95173376/614bce0c-52ac-451b-893c-57169f5c3307" alt="image"></p>
+<h1 id="to-configure-opensta-for-post-timing-analysis">To configure OpenSTA for post timing analysis</h1>
+<p>create a file named pre_sta.conf in openlane directory.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/b22252ac-1688-4858-801e-30a971e40147" alt="image"></p>
+<p>We can see our cell's pin capacitance in *typical.lib file
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/c5aec2e7-045f-4994-9efc-acfc7d2c2b04" alt="image"></p>
+<p>we have to create a file called my_base.scd in src file of design.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/0401d8cb-eeea-4419-b738-d45aae289add" alt="image"></p>
+<p>the above my_base.scd is written by taking the reference of base.sdc fiel in openlane scripts.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/3bd87267-f691-495e-a5cd-5c0e3c39a5cf" alt="image"></p>
+<p><img src="https://github.com/arungithub007/vsdworks/assets/95173376/f3e84329-b6de-4024-bda9-4da671dfc0af" alt="image">
+this the file where we are going to do STA.</p>
+<p>use command:</p>
+<blockquote>
+<p>sta pre_sta.conf</p>
+</blockquote>
+<p>we can get the report of the nets using:</p>
+<blockquote>
+<p>report_net -connections <em>net_instance_name</em>
+replace_cell instace lib_cell
+report_checks -fileds {net cap slew input_pins} -digits 4
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/4d4f097a-2fee-41ed-b608-89cbebb740ce" alt="image"></p>
+</blockquote>
+<p>by replacing the currect cell we can reduce the slack and get the report again.
+<img src="https://github.com/arungithub007/vsdworks/assets/95173376/09645f8a-c71d-4628-a197-530175d432e7" alt="image"></p>
 
             <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
             

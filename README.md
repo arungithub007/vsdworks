@@ -513,6 +513,39 @@ when we expand the vsdinv cell we can see the connection between metal layers of
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/614bce0c-52ac-451b-893c-57169f5c3307)
 
 
+# To configure OpenSTA for post timing analysis
+create a file named pre_sta.conf in openlane directory.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/b22252ac-1688-4858-801e-30a971e40147)
+
+
+
+
+We can see our cell's pin capacitance in *typical.lib file
+ ![image](https://github.com/arungithub007/vsdworks/assets/95173376/c5aec2e7-045f-4994-9efc-acfc7d2c2b04)
+
+we have to create a file called my_base.scd in src file of design.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/0401d8cb-eeea-4419-b738-d45aae289add)
+
+
+the above my_base.scd is written by taking the reference of base.sdc fiel in openlane scripts.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/3bd87267-f691-495e-a5cd-5c0e3c39a5cf)
+
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/f3e84329-b6de-4024-bda9-4da671dfc0af)
+this the file where we are going to do STA.
+
+use command:
+>sta pre_sta.conf
+
+we can get the report of the nets using:
+> report_net -connections _net_instance_name_
+> replace_cell instace lib_cell
+> report_checks -fileds {net cap slew input_pins} -digits 4
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/4d4f097a-2fee-41ed-b608-89cbebb740ce)
+
+by replacing the currect cell we can reduce the slack and get the report again.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/09645f8a-c71d-4628-a197-530175d432e7)
+
+
 
 
 
