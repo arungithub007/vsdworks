@@ -546,6 +546,72 @@ by replacing the currect cell we can reduce the slack and get the report again.
 ![image](https://github.com/arungithub007/vsdworks/assets/95173376/09645f8a-c71d-4628-a197-530175d432e7)
 
 
+After reducing the slack value to 0 or almost 0. we should rewite the old design.v file with the newly modified one. For that we use ***write*** command with path to design file with name, which will replace the old design file with new one.
+
+>%write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/03-05_12-25/results/synthesis/picorv32a.synthesis.v
+
+then we can exit OpenSTA
+
+
+After rewriting the netlist in openSTA we shouldnt run the synthesis again bcz it will create new netlist.
+
+>1) Therefore now next step is to run_floorplan. So that it takes the updated netlist.
+>2) run_placement
+
+# Run CTS
+After getting to placement stage of updated netlist we need to run CTS.
+>run_cts
+
+this may take some time to run. then it will create cts file in synthesis file inside results.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/42c6338a-69e9-4197-9bc8-68a8a200befa)
+
+
+To know what are the arguments the our cts will check we need to go for cts.tcl in command file of openlane.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/158b846f-3692-420a-bed4-e09f01a72c0d)
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/fb7ad996-26e7-45ea-9953-9c8600a1b250) 
+here the main thing we need to look is for openroad.
+
+these are the tcl files we can see in the openroad.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/20908472-1a1e-4af9-804e-f2069ea7b663)
+
+Here we cannot see the synthesis part bcz openlane normally dosnt involve the synthesis in the process if we look into the openlane flow.
+
+### Post-CTS OpenROAD timing analysis.
+
+The next stages are power distribution and Routing. Both will use the .def file.
+
+Since openlace is integrated with openlane. we can access openroad in the openlane.
+![image](https://github.com/arungithub007/vsdworks/assets/95173376/94a8c23c-704e-41e2-8894-02d985b92e69)
+Now we can do Timing analysis here itself.
+
+``
+openroad
+
+read_lef /openLANE_flow/designs/picorv32a/runs/30-04_05-57/tmp/merged.lef
+
+read_def /openLANE_flow/designs/picorv32a/runs/30-04_05-57/results/cts/picorv32a.cts.def
+
+write_db pico_cts.db
+
+read_db pico_cts.db
+
+read_verilog /openLANE_flow/designs/picorv32a/runs/30-04_05-57/results/synthesis/picorv32a.synthesis_cts.v
+
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+link_design picorv32a
+
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+set_propagated_clock [all_clocks]
+
+help report_checks
+
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+``
+
+
 
 
 
